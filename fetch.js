@@ -171,7 +171,7 @@ export default class XRequest {
                     ...this._addContentType(isFormData),
                     ...(token ? { [authorization_name]: token } : {}),
                 },
-                body: body ? body : {},
+                ...(body ? { body } : {}),
             })
                 .then((res) => this._checkStatus(res))
                 .then((res) => this._checkError(res, resolve))
