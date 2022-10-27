@@ -69,7 +69,7 @@ export default class XRequest {
             throw new Error("FormData必须使用POST");
         }
         if (!isFormData) {
-            if (method === "POST") {
+            if (method === "POST" || method === "DELETE" || method === "PUT") {
                 body = JSON.stringify(options.body || options);
             }
         } else {
@@ -215,6 +215,20 @@ export default class XRequest {
         return this.request(url, options, {
             ...config,
             method: "POST",
+        });
+    }
+
+    put(url, options = {}, config = {}) {
+        return this.request(url, options, {
+            ...config,
+            method: "PUT",
+        });
+    }
+
+    delete(url, options = {}, config = {}) {
+        return this.request(url, options, {
+            ...config,
+            method: "DELETE",
         });
     }
 }

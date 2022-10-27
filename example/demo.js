@@ -10,13 +10,13 @@ const updateUserInfo = async () => {
     });
 };
 
-const uploadFile = async () => {
+const uploadFile = async (formData) => {
     const res = await Request.post(
         "/upload/files",
         {
             file: {
-                type: postData.type,
-                name: postData.fileName,
+                type: formData.type,
+                name: formData.fileName,
             },
         },
         { isFormData: true }
