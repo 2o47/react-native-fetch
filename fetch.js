@@ -55,8 +55,8 @@ export default class XRequest {
     // 为POST, PUT时设置contentType
     _addContentType(isFormData) {
         return {
-            "Content-Type": isFormData
-                ? "application/x-www-form-urlencoded"
+            "content-type": isFormData
+                ? "multipart/form-data"
                 : "application/json",
         };
     }
